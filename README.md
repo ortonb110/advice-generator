@@ -60,8 +60,6 @@ This is a solution to the [Advice Generator on Frontend Mentor](https://www.fron
 
 Your users should be able to:
 
-- Distinguish between "unread" and "read" notifications
-- Select "Mark all as read" to toggle the visual state of the unread notifications and set the number of unread messages to zero
 - View the optimal layout for the interface depending on their device's screen size
 The perfect project if you're learning how to interact with 3rd-party APIs. This challenge uses the Advice Slip API to generate random quotes of advice.
 
