@@ -9,16 +9,7 @@ export default function Main() {
     const [adviceId, setAdviceId] = useState(1)
 
     useEffect(()=> {
-        try {
-            fetch(`https://api.adviceslip.com/advice/${adviceId}`).then(response => response.json()).then(data=> {
-                setAdviceArr(JSON.stringify(data.slip.advice));
-                setAdviceId(JSON.stringify(data.slip.id))
-            });
-            
-            
-        } catch (err) {
-            console.log(err.message)
-        }
+        fetchAdvice();
 
         
 
@@ -26,9 +17,9 @@ export default function Main() {
     
     const fetchAdvice = () => {
         try {
-            fetch(`https://api.adviceslip.com/advice/${adviceId}`).then(response => response.json()).then(data=> {
+            fetch(`https://api.adviceslip.com/advice`).then(response => response.json()).then(data=> {
                 setAdviceArr(JSON.stringify(data.slip.advice));
-                setAdviceId(JSON.stringify(data.slip.id))
+                
             });
             
             
