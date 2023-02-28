@@ -38,7 +38,7 @@ export default function Main() {
                 <source media="(max-width: 650px)" srcSet={patternDividerMobile}  />
                 <img src={patternDividerDesktop} alt="Divider" className="mb-14 w-full"/>
             </picture>
-            <button className="bg-primaryNeonGreen hover:shadow-[0_0_25px_8px] hover:shadow-primaryNeonGreen transition-all ease-in-out duration-300 p-6 rounded-full absolute right-[50%] translate-x-[50%]  " onClick={fetchAdvice}> <img src={buttonIcon} alt="Button Icon" role={"button"} className="w-[1.8rem]"/></button>
+            <button className="bg-primaryNeonGreen hover:shadow-[0_0_25px_8px] hover:shadow-primaryNeonGreen transition-all ease-in-out duration-300 p-6 rounded-full absolute right-[50%] translate-x-[50%]  " onClick={fetchAdvice}> <img src={buttonIcon} alt="Button Icon" className="w-[1.8rem]"/></button>
         </main>
     )
 }
