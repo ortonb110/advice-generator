@@ -6,15 +6,27 @@ import patternDividerMobile from '../assets/images/pattern-divider-mobile.svg';
 
 export default function Main() {
     const [adviceArr, setAdviceArr]= useState([])
-    const [adviceId, setAdviceId] = useState("")
+    const [adviceId, setAdviceId] = useState(1)
 
     useEffect(()=> {
+        try {
+            fetch(`https://api.adviceslip.com/advice/${adviceId}`).then(response => response.json()).then(data=> {
+                setAdviceArr(JSON.stringify(data.slip.advice));
+                setAdviceId(JSON.stringify(data.slip.id))
+            });
+            
+            
+        } catch (err) {
+            console.log(err.message)
+        }
 
-    }, [adviceArr, adviceId])
+        
+
+    }, [adviceId])
     
     const fetchAdvice = () => {
         try {
-            fetch("https://api.adviceslip.com/advice").then(response => response.json()).then(data=> {
+            fetch(`https://api.adviceslip.com/advice/${adviceId}`).then(response => response.json()).then(data=> {
                 setAdviceArr(JSON.stringify(data.slip.advice));
                 setAdviceId(JSON.stringify(data.slip.id))
             });
@@ -38,7 +50,7 @@ export default function Main() {
                 <source media="(max-width: 650px)" srcSet={patternDividerMobile}  />
                 <img src={patternDividerDesktop} alt="Divider" className="mb-14 w-full"/>
             </picture>
-            <button className="bg-primaryNeonGreen hover:shadow-[0_0_25px_8px] hover:shadow-primaryNeonGreen transition-all ease-in-out duration-300 p-6 rounded-full absolute right-[50%] translate-x-[50%]  " onClick={fetchAdvice}> <img src={buttonIcon} alt="Button Icon" className="w-[1.8rem]"/></button>
+            <button className="bg-primaryNeonGreen hover:shadow-[0_0_25px_8px] hover:shadow-primaryNeonGreen transition-all ease-in-out duration-300 p-6 rounded-full absolute right-[50%] translate-x-[50%]" onClick={()=> {setAdviceId(parseInt(adviceId) + 1)}}><img src={buttonIcon} alt="Button Icon" className="w-[1.8rem]"/></button>
         </main>
     )
 }
